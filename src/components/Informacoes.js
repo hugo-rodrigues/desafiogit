@@ -9,14 +9,7 @@ import CardRepositorio from './CardRepositorio';
 import CardUsuario from './CardUsuario';
 
 function Informacoes({ match }) {
-  const [name, setName] = useState('');
-  const [userName, setUserName] = useState('');
-  const [followers, setFollowers] = useState('');
-  const [following, setFollowing] = useState('');
-  const [repos, setRepos] = useState('');
-  const [avatar, setAvatar] = useState('');
-  const [bio, setBio] = useState('');
-  const [email, setEmail] = useState('');
+
   const [error, setError] = useState(null);
   const [repoInfo, setRepoInfo] = useState({});
   const [UserInfo, setUserInfo] = useState({});
@@ -28,11 +21,10 @@ function Informacoes({ match }) {
       .then(data => {
         if (data.message) {
           setError(data.message)
-          console.log(data);
+          
         }
         else {
-          console.log(data);
-          setData(data);
+       
           setUserInfo(data);
           setError(null);
         }
@@ -80,18 +72,6 @@ function Informacoes({ match }) {
 
 
 
-
-  const setData = ({ name, login, followers, following, public_repos, avatar_url, bio, email }) => {
-
-    setBio(bio);
-    setEmail(email);
-    setName(name);
-    setUserName(login);
-    setFollowers(followers);
-    setFollowing(following);
-    setRepos(public_repos);
-    setAvatar(avatar_url);
-  };
 
   return (
     <div>

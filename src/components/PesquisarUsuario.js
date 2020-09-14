@@ -12,19 +12,15 @@ function PesquisaUsuario() {
   const handlerSearch = (e) => {
 
     setUserInput(e.target.value);
-    console.log(userInput);
+
   };
-  const handlerSubmit = () => {
-
-    console.log(userInput);
-
-  }
+ 
 
 
   return (
 
 
-    <Form onSubmit={handlerSubmit} >
+    <Form >
       <Form.Group widths='equal'>
 
         <Form.Input placeholder='Usuario GitHub' className="PesquisaUsuario" name='usuario github' onChange={handlerSearch} />
