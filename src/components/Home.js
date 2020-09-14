@@ -9,7 +9,7 @@ function Home() {
 
 
   return (
-
+    <section>
     <Container className='homePesquisa'>
       <Segment.Group>
 
@@ -22,7 +22,7 @@ function Home() {
 
       </Segment.Group>
     </Container>
-
+    </section>
   );
 }
 

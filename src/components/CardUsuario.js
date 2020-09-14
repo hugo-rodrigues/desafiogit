@@ -12,7 +12,7 @@ function CardUsuario(props) {
 
     return (
 
-
+        <aside>
         <Card fluid>
 
             <Image src={props.avatar_url} wrapped ui={false} />
@@ -48,7 +48,7 @@ function CardUsuario(props) {
             </Card.Content>
 
         </Card>
-
+        </aside>
 
     );
 }

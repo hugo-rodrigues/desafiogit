@@ -21,10 +21,10 @@ function Informacoes({ match }) {
       .then(data => {
         if (data.message) {
           setError(data.message)
-          
+
         }
         else {
-       
+
           setUserInfo(data);
           setError(null);
         }
@@ -77,24 +77,26 @@ function Informacoes({ match }) {
     <div>
       <Nav />
       {error ? <Erro /> :
+        <section>
+          <Grid>
+            <Grid.Column width={4}>
+              <CardUsuario {...UserInfo} />
 
-        <Grid>
-          <Grid.Column width={4}>
-            <CardUsuario {...UserInfo} />
+            </Grid.Column>
+            <Grid.Column width={9}>
+              {Object.keys(repoInfo).map(
+                (id) =>
 
-          </Grid.Column>
-          <Grid.Column width={9}>
-            {Object.keys(repoInfo).map(
-              (id) =>
+                  <CardRepositorio {...repoInfo[id]} />
 
-                <CardRepositorio {...repoInfo[id]} />
-
-            )}
+              )}
 
 
-          </Grid.Column>
+            </Grid.Column>
 
-        </Grid>}
+          </Grid>
+        </section>
+      }
 
 
     </div>
