@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import {BrowserRouter as Router, Switch,Route} from 'react-router-dom';
-import { Card, Icon, Image,Form } from 'semantic-ui-react'
+import React from 'react';
+import {BrowserRouter as Router, Switch,Route,Redirect} from 'react-router-dom';
+
 
 import './App.css';
-import Nav from './Nav';
-import About from './About';
-import Shop from './Shop';
-import Informacoes from './Informacoes';
-import Home from './Home';
+
+import Informacoes from './components/Informacoes';
+import Home from './components/Home';
 function App() {
 
 
@@ -18,11 +16,10 @@ function App() {
   <Switch>
  
  <Route path="/" exact component={Home} />
-<Route path="/informacoes" exact  component={Informacoes} /> 
+<Route path="/informacoes" exact  component={Home}> <Redirect to="/" /></Route>
 
 <Route path="/informacoes/:id"   component={Informacoes} /> 
- <Route path="/shop" exact component={Shop} />
- {/* <Route path="/shop/:id"  component={ItemDetail} /> */}
+
  </Switch>
 </div>
 </Router>
