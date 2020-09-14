@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import { Card, Icon, Image,Form } from 'semantic-ui-react'
+import { Card, Icon, Image,Form, Grid, Segment, Button, Menu, Input } from 'semantic-ui-react'
 import { Link} from 'react-router-dom'
 import './App.css';
 import Informacoes from './Informacoes';
 
 function Nav() {
- 
-  const Navstyle={
-    color: 'white'
-  };
+
   const [userInput,setUserInput] = useState([])
  
   const handlerSearch = (e) =>{
@@ -28,20 +25,31 @@ function Nav() {
   return (
 
 <nav>
-<Form  onSubmit = {handlerSubmit} >
+<Grid>
+    <Grid.Column floated='left' width={5}>
+    <Link Link to ='/'  className='link'>  <h1>Github <i>Pages</i></h1></Link>
+  
+    </Grid.Column>
+    <Grid.Column floated='right' width={5}>
+    <Form  onSubmit = {handlerSubmit} >
    <Form.Group widths='equal'>
    
      <Form.Input   placeholder='Usuario GitHub' className="PesquisaUsuario" name ='usuario github' onChange={handlerSearch} />
 
-     <Form.Button color='pink' as={Link} to={`/informacoes/${userInput}`} >
+     {/* <Form.Button color='pink' as={Link} to={`/informacoes/${userInput}`}> */}
+     <Button as={Link} to={`/informacoes/${userInput}`} color='pink'><Icon   name='search' /></Button>
 
-     <Icon   name='search' />
+     
 
-     </Form.Button >
+     {/* </Form.Button > */}
    </Form.Group>
 
   
  </Form>
+    </Grid.Column>
+  </Grid>
+  
+
 </nav>
   );
 }

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import { Card, Icon, Image,Form } from 'semantic-ui-react'
+import { Card, Icon, Image,Form,Grid } from 'semantic-ui-react'
 import Nav from './Nav';
 import {Link} from 'react-router-dom'
 import './App.css';
-
+import Erro from './Erro';
 function Informacoes({match}) {
     const [name,setName] = useState('');
     const [userName,setUserName] = useState('');
@@ -12,7 +12,8 @@ function Informacoes({match}) {
     const [following,setFollowing] = useState('');
     const [repos,setRepos] = useState('');
     const [avatar,setAvatar] = useState('');
-    const [userInput,setUserInput] = useState('');
+    const [bio,setBio] = useState('');
+    const [email,setEmail] = useState('');
     const [error,setError] = useState(null);
     const [repoInfo, setRepoInfo] = useState({});
 
@@ -43,12 +44,7 @@ function Informacoes({match}) {
          else{
             const  results  = data;
             const newRepositorioData = {};
-        //     const newRepositorioData = {};
-        //     data.forEach((repositorio, index) => {
-        //     newRepositorioData[index + 1] = {
-        //     id: repositorio.id,
-        //     name: repositorio.name
-        //   };
+ 
         const ordenacao = results.sort(function(a,b)
         {
           return b.stargazers_count - a.stargazers_count  ;
@@ -66,8 +62,7 @@ function Informacoes({match}) {
             
           setRepoInfo(newRepositorioData);
             
-              // console.log(ordenada);
-              //  setRepoInfo(ordenada);
+
           console.log(newRepositorioData);
           setError(null);
          }
@@ -85,30 +80,31 @@ function Informacoes({match}) {
         const { id, name ,descricao, star } = repoInfo[repositorio];
         return (
           <div  key={id}>
+           <Card fluid className='cardsRepositorio'>
+           <Card.Content>
+      <Card.Header><h1 className='TextoRosa'>{name}</h1></Card.Header>
+      <Card.Description>
+        {descricao} 
+      </Card.Description>
+ 
+    </Card.Content>
+           <Card.Content extra>
+      <a>
+        <Icon name='star' />
+        {star}
+      </a>
+    </Card.Content>
+           </Card>
            
-              
-            <h1>
-                  {name}
-                 
-                  </h1>
-                
-                  <h1>
-               
-                  {descricao} 
-                  </h1>
-                  <h1>
-                 
-                 {star}
-             
-                 </h1>
            
           </div>
         );
       };
 
-      const setData = ({name, login, followers ,following, public_repos, avatar_url}) => {
+      const setData = ({name, login, followers ,following, public_repos, avatar_url, bio, email}) => {
 
-
+        setBio(bio);
+        setEmail (email);
         setName(name);
         setUserName(login);
         setFollowers(followers);
@@ -116,48 +112,65 @@ function Informacoes({match}) {
         setRepos(public_repos);
         setAvatar(avatar_url);
       };
-
+      console.log(email);
   return (
+<div>
+<Nav />
+  {error ? <Erro/> :
+  
+  <Grid>
+  <Grid.Column width={4}>
+  <Card fluid>
+    
+         <Image src={avatar} wrapped ui={false} />
+         <Card.Content>
+         <Card.Header>{name}</Card.Header>
+         <Card.Meta>{userName}</Card.Meta>
+         <Card.Meta>{bio}</Card.Meta>
+       </Card.Content>
+       <Card.Content extra>
+         <a>
+           <Icon name='user' />
+           {followers} Seguidores
+         </a>
+       </Card.Content>
+       <Card.Content extra>
+         <a>
+           <Icon name='user' />
+           {repos} Repositorios
+         </a>
+       </Card.Content>
+       <Card.Content extra>
+         <a>
+           <Icon name='user' />
+           {following} Seguindo
+         </a>
+       </Card.Content>
+       <Card.Content extra>
+         <a>
+           <Icon name='mail' />
+           {email} 
+         </a>
+       
+       </Card.Content>
+    
+    </Card>
+  </Grid.Column>
+  <Grid.Column width={9}>
+  {Object.keys(repoInfo).map(
+          (id) =>
+           
+          getRepositorioCard(id)
+        )}
 
 
+  </Grid.Column>
 
-    <div className="card">
-        <Nav />
-         <Card>
-           <Image src={avatar} wrapped ui={false} />
-           <Card.Content>
-           <Card.Header>{name}</Card.Header>
-           <Card.Header>{userName}</Card.Header>
-         </Card.Content>
-         <Card.Content extra>
-           <a>
-             <Icon name='user' />
-             {followers} folowers
-           </a>
-         </Card.Content>
-         <Card.Content extra>
-           <a>
-             <Icon name='user' />
-             {repos} repos
-           </a>
-         </Card.Content>
-         <Card.Content extra>
-           <a>
-             <Icon name='user' />
-             {following} folouing
-           </a>
-         </Card.Content>
-       </Card>
+</Grid>}
 
-       <div container spacing={2} >
+   
+    </div>
 
-          {Object.keys(repoInfo).map(
-            (id) =>
-             
-            getRepositorioCard(id)
-          )}
-        </div>
-         </div>
 
 
   );

@@ -21,8 +21,8 @@ function App() {
 <Route path="/informacoes" exact  component={Informacoes} /> 
 
 <Route path="/informacoes/:id"   component={Informacoes} /> 
- {/* <Route path="/shop" exact component={Shop} />
- <Route path="/shop/:id"  component={ItemDetail} /> */}
+ <Route path="/shop" exact component={Shop} />
+ {/* <Route path="/shop/:id"  component={ItemDetail} /> */}
  </Switch>
 </div>
 </Router>

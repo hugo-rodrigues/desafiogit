@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Card, Icon, Image,Form } from 'semantic-ui-react'
+import { Card, Icon, Image,Form,Container,Segment,Button } from 'semantic-ui-react'
 import {Link,Redirect} from 'react-router-dom'
 import './App.css';
 
@@ -37,23 +37,31 @@ function Home() {
 
   return (
 
-
-    <div>
+    <Container className = 'homePesquisa'>
+    <Segment.Group>
+     
+      <Segment><h1>GitHub <i>Pages</i></h1></Segment>
+      <Segment>    <div>
 <Form  onSubmit = {handlerSubmit} >
    <Form.Group widths='equal'>
    
      <Form.Input   placeholder='Usuario GitHub' className="PesquisaUsuario" name ='usuario github' onChange={handlerSearch} />
 
-     <Form.Button color='pink' as={Link} to={`/informacoes/${userInput}`}>
+     {/* <Form.Button color='pink' as={Link} to={`/informacoes/${userInput}`}> */}
+     <Button as={Link} to={`/informacoes/${userInput}`} color='pink'><Icon   name='search' /></Button>
 
-     <Icon   name='search' />
+     
 
-     </Form.Button >
+     {/* </Form.Button > */}
    </Form.Group>
 
   
  </Form>
-    </div>
+    </div></Segment>
+     
+    </Segment.Group>
+  </Container>
+
   );
 }
 

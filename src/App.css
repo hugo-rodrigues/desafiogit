@@ -3,8 +3,15 @@ Nav{
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background: blue;
-  color: white;
+
+  color: black;
+}
+
+.link {
+  color: black;
+}
+.link:hover {
+   color: #00F
 }
 
 .App{
@@ -18,3 +25,25 @@ Nav{
   align-items: center;
   list-style: none;
 }
+.GitHubName{
+ 
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+.homePesquisa{
+  display: flex;
+  justify-content: space-around;
+  padding: 250px 0px;
+}
+
+.cardsRepositorio{
+  text-align: left;
+}
+.TextoRosa{
+  color:#ac53f2;
+}
+
+
