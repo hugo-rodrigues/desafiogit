@@ -25,19 +25,19 @@ function CardUsuario(props) {
                 <a>
                     <Icon name='user' />
                     {props.followers} Seguidores
-    </a>
+                </a>
             </Card.Content>
             <Card.Content extra>
                 <a>
                     <Icon name='user' />
                     {props.repos} Repositorios
-    </a>
+                </a>
             </Card.Content>
             <Card.Content extra>
                 <a>
                     <Icon name='user' />
                     {props.following} Seguindo
-    </a>
+                </a>
             </Card.Content>
             <Card.Content extra>
                 <a>

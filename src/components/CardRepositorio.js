@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import { Card, Icon, Image, Form, Grid, Segment, Button, Menu, Input } from 'semantic-ui-react'
+import { Card, Icon } from 'semantic-ui-react'
 
 import '../App.css';
 
